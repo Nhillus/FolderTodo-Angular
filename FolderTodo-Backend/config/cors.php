@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://efd0312b6388.ngrok.io'],//http://localhost:8080
+    'allowed_origins' => ['*'],//http://localhost:8080
 
     'allowed_origins_patterns' => [],
 

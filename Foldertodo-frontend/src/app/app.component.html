@@ -54,44 +54,91 @@
     <div class="col-sm-8">
       <h2>Algunos Todo</h2>
       <div class="container bg-secondary" style="width:800px;  padding: 15px 5px 15px 5px;">
-        <div class="card-columns">  
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
-          <div class="card">
-            <div class="card-body">Basic card</div>
-          </div>
+        <div class="card-columns"> 
+          <ul>
+            
+              <div *ngFor="let todo of todos" class="card">
+                <div class="card-body" (click)="seleccionado(todo)"> 
+                  {{todo.nombre}}
+                  <button (click)="seleccionado(todo)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="bi bi-pencil"></i>
+                  </button>
+
+                  <button (click)="elimiTodo(todo.id)" class="btn btn-outline-primary">
+                    <i class="bi bi-file-earmark-x-fill"></i>
+                  </button>
+
+                
+
+                </div>
+              </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Editando {{seleccionartodo.nombre}} </h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="mb-6">
+                              <label for="recipient-name" class="col-form-label">Nombre:</label>
+                              <input type="text" #nuevonombre class="form-control" id="recipient-name">
+                            </div>
+                            
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button (click)="editTodo(seleccionartodo,nuevonombre.value)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+            
+          </ul>
         </div>
+
+        
+        
+
+
+
+          <h3>Cart</h3>
+
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="addTodo()">
+
+  <div>
+    <label for="nombre">
+      nombre
+    </label>
+    <input id="nombre" type="text" formControlName="nombre">
+  </div>
+
+  <div>
+    <label for="estado">
+      estado
+    </label>
+    <input id="estado" type="text" formControlName="estado">
+  </div>
+
+  <button class="button" type="submit">agregar</button>
+</form>
+              
+        
+      
+
+
+
       </div>
     </div>
   </div>
 </div>
 
-<
+
 
 </body>
 </html>
